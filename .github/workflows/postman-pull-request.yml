@@ -9,5 +9,5 @@ jobs:
       - uses: actions/checkout@master
       - uses: matt-ball/newman-action@master
         with:
-           collection: https://github.com/carloseduardo1984/api_with_github_actions/blob/main/MinhaColecao.postman_collection.json
-           environment: https://github.com/carloseduardo1984/api_with_github_actions/blob/main/MeuAmbiente.postman_environment.json
+           collection: https://dark-satellite-395171.postman.co/workspace/API-Actions~e7467091-c662-40e6-83a9-678f20813eb5/request/7347102-1ff27d00-c051-4c2e-a932-347b636ab847
+           environment: https://go.postman.co/workspace/API-Actions~e7467091-c662-40e6-83a9-678f20813eb5/environment/7347102-e29b7c77-f801-4a97-86cf-7faba6b35e81
