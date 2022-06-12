@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "daafdebb-3849-42d8-9df5-56cc20ba5b83",
+		"name": "MinhaColecao",
+		"description": "Insira seus comentarios aqui",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7347102"
+	},
+	"item": [
+		{
+			"name": "Get consult",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[ \r\n    { \r\n        \"id\": 11, \r\n        \"name\": \"Carlos ultima\", \r\n        \"username\": \"cau\", \r\n        \"email\": \"cau@april.biz\", \r\n        \"address\": { \r\n            \"street\": \"Romaguera-Crona Light\" , \r\n            \"suite\": \"Apt. 556\", \r\n            \"city\": \"aqui\", \r\n            \"zipcode\": \"92998-3838\", \r\n            \"geo\": { \r\n                \"lat\": \"-37.3199\", \r\n                \"lng\": \"81.1496\" \r\n            } \r\n        }, \r\n        \"telefone\": \"1-770-736-8031 x56442\", \r\n        \"site\": \"hildegard.org\", \r\n        \"empresa\": { \r\n            \"nome\": \"Romaguera-Crona\",\r\n            \"catchPhrase\": \"Rede neural cliente-servidor de várias camadas\", \r\n            \"bs\": \"aproveite os mercados eletrônicos em tempo real\" \r\n        } \r\n    } \r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[ \r\n    { \r\n        \"id\": 11, \r\n        \"name\": \"Carlos ultima\", \r\n        \"username\": \"cau\", \r\n        \"email\": \"cau@april.biz\", \r\n        \"address\": { \r\n            \"street\": \"Romaguera-Crona Light\" , \r\n            \"suite\": \"Apt. 556\", \r\n            \"city\": \"aqui\", \r\n            \"zipcode\": \"92998-3838\", \r\n            \"geo\": { \r\n                \"lat\": \"-37.3199\", \r\n                \"lng\": \"81.1496\" \r\n            } \r\n        }, \r\n        \"telefone\": \"1-770-736-8031 x56442\", \r\n        \"site\": \"hildegard.org\", \r\n        \"empresa\": { \r\n            \"nome\": \"Romaguera-Crona\",\r\n            \"catchPhrase\": \"Rede neural cliente-servidor de várias camadas\", \r\n            \"bs\": \"aproveite os mercados eletrônicos em tempo real\" \r\n        } \r\n    } \r\n]\r\n"
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
