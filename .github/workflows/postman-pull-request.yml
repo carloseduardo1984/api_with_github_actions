@@ -1,13 +1,44 @@
-name: Newman Run
-
-on: [push, pull_request]
-  
+name: Test-Build
+on:
+  push:
+    branches:
+      - main
 jobs:
-  newman:
+  test-api:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: matt-ball/newman-action@master
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+
+      # INstall Node on the runner
+      - name: Install Node
+        uses: actions/setup-node@v1
         with:
-           collection: https://dark-satellite-395171.postman.co/workspace/API-Actions~e7467091-c662-40e6-83a9-678f20813eb5/request/7347102-1ff27d00-c051-4c2e-a932-347b636ab847
-           environment: https://go.postman.co/workspace/API-Actions~e7467091-c662-40e6-83a9-678f20813eb5/environment/7347102-e29b7c77-f801-4a97-86cf-7faba6b35e81
+          node-version: "12.x"
+
+
+      # Install the newman command line utility and also install the html extra reporter
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+
+      # Make directory to upload the test results
+      - name: Make Directory for results
+        run: mkdir -p testResults
+
+
+      # Run the POSTMAN collection
+      - name: Run POSTMAN collection
+        run: |
+          newman run MinhaColecao.postman_collection.json -e MeuAmbiente.postman_environment.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html
+
+
+      # Upload the contents of Test Results directory to workspace
+      - name: Output the run Details
+        uses: actions/upload-artifact@v2
+        with:
+          name: RunReports
+          path: testResults
