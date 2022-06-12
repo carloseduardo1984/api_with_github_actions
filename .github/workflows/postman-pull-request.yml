@@ -1,37 +1,16 @@
-name: my actions
-on: [push, pull_request] // this action runs on each new push and pull_request
+name: Newman Run
+
+on:
+  pull_request:
+    branches:
+    - master
 
 jobs:
-  build:
+  newman:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
-        mongodb-version: [4.2]
-  steps:
-  - name: Check out Git repositor
-    uses: actions/checkout@v1
-  - name: Set up Node.js
-    uses: actions/setup-node@v1
-    with:
-      node-version: ${{ matrix.node-version }}
-      registry-url: https://registry.npmjs.org/
-  - name: Start MongoDB ${{ matrix.mongodb-version }}
-    uses: supercharge/mongodb-github-action@1.3.0
-    with:
-      mongodb-version: ${{ matrix.mongodb-version }}
-  - name: Install dependencies
-    run: npm install
-  - name: Install newman
-    run: npm install -g newman
-  - name: Seed mongo
-    run: mongo 127.0.0.1/infinite-digital-postman-tests  test/postman/setup.js
-  - name: Run the API and Postman's tests
-    run: | 
-      npm run start:dev & sleep 60
-      newman run "MinhaColecao.postman_collection.json"
-    env:
-      MONGO_URI: "mongodb://127.0.0.1:27017/test-db"
-      PORT: "8123"
-      STAGE: "local"
-      NODE_ENV: "develop"
+    steps:
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
+        with:
+           collection: https://github.com/carloseduardo1984/api_with_github_actions/blob/main/MinhaColecao.postman_collection.json
+           environment: https://github.com/carloseduardo1984/api_with_github_actions/blob/main/MeuAmbiente.postman_environment.json
