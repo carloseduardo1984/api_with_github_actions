@@ -1,4 +1,4 @@
-name: postman-pull-request
+name: my actions
 on: [push, pull_request] // this action runs on each new push and pull_request
 
 jobs:
