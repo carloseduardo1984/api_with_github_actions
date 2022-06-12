@@ -28,11 +28,10 @@ jobs:
     run: mongo 127.0.0.1/infinite-digital-postman-tests  test/postman/setup.js
   - name: Run the API and Postman's tests
     run: | 
-      npm run start:dev &
-      sleep 60
+      npm run start:dev & sleep 60
       newman run "MinhaColecao.postman_collection.json"
     env:
       MONGO_URI: "mongodb://127.0.0.1:27017/test-db"
-      PORT: "3000"
+      PORT: "8123"
       STAGE: "local"
       NODE_ENV: "develop"
