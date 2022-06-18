@@ -1,5 +1,5 @@
 # API_com_GitHub_Actions
-Nossa api com with github actions
+Nossa api com with github actions_
 
 ### O que são GitHub Actions?
 As GitHub Actions (ações do GitHub) são os fluxos de trabalho, mais conhecidos na área de projetos de software como pipelines, que permitem o uso de um conjunto de ações ao serem identificados determinados eventos  no repositório. Um evento no repositório pode ser tão simples, por exemplo "quando um push é feito para o branch master" ou "Uma solicitação de pull é levantada no branch master". O GitHub Actions nos permite automatizar certas respostas a esses eventos usando fluxos de trabalho (workflows) automatizados chamados de GitHub Actions. Essas ações reagem a um ou vários eventos e executam determinadas tarefas, por exemplo. "Construir e executar os testes", "Implantar o código", "Mesclar o código de uma ramificação para outra".
