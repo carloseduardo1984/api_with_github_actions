@@ -31,6 +31,11 @@ jobs:
 
 
       # Run the POSTMAN collection
+      - name: Run POSTMAN collection on real time
+        run: |
+          newman run MinhaColecao.postman_collection.json -e MeuAmbiente.postman_environment.json 
+
+      # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
           newman run MinhaColecao.postman_collection.json -e MeuAmbiente.postman_environment.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html
