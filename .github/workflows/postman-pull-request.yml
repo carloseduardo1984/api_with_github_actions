@@ -3,6 +3,16 @@ on:
   push:
     branches:
       - main
+      
+  inputs:
+          NODE_VERSION: 
+           type: choice 
+           description: 'Select node version'
+           options:
+           - '12'
+           - '14'
+           - '16'    
+      
 jobs:
   test-api:
     runs-on: ubuntu-latest
@@ -15,7 +25,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: ${{ github.event.inputs.NODE_VERSION }}
 
 
       # Install the newman command line utility and also install the html extra reporter
