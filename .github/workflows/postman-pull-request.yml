@@ -1,8 +1,15 @@
 name: Test-Build
 on:
-  push:
+
+ schedule:
+ - cron: '0 */6 * * 5'  # https://crontab.guru/ #
+  
+ push:                   # EXECUÇÃO A CADA PUSH NA BRANCH MAIN
     branches:
-      - main
+     - 'main'
+      
+ workflow_dispatch:      # EXECUÇÃO MANUAL
+
 jobs:
   test-api:
     runs-on: ubuntu-latest
